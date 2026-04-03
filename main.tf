@@ -33,6 +33,16 @@ resource "aws_route_table" "rt" {
   }
 }
 
+resource "aws_route_table_association" "rt-association1" {
+  subnet_id      = aws_subnet.subnet1.id
+  route_table_id = aws_route_table.rt.id
+}
+
+resource "aws_route_table_association" "rt-association2" {
+  subnet_id      = aws_subnet.subnet2.id
+  route_table_id = aws_route_table.rt.id
+}
+
 resource "aws_subnet" "subnet1" {
   vpc_id            = aws_vpc.main.id
   cidr_block        = var.subnet["subnet1"]["cidr"]
