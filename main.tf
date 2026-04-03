@@ -60,3 +60,36 @@ resource "aws_subnet" "subnet2" {
     Name = "subnet2"
   }
 }
+
+resource "aws_s3_bucket" "bucket" {
+  bucket = "abc-test-20010556"
+  tags = {
+    Name        = "abc bucket"
+  }
+}
+
+resource "aws_security_group" "allow_ssh_http" {
+  name        = "allow_ssh_http"
+  description = "Allow ssh and http inbound traffic and all outbound traffic"
+  vpc_id      = aws_vpc.main.id
+
+  tags = {
+    Name = "allow_ssh_http"
+  }
+}
+
+resource "aws_vpc_security_group_ingress_rule" "allow_ssh_ipv4" {
+  security_group_id = aws_security_group.allow_ssh_http.id
+  cidr_ipv4         = aws_vpc.main.cidr_block
+  from_port         = 22
+  ip_protocol       = "tcp"
+  to_port           = 22
+}
+
+resource "aws_vpc_security_group_ingress_rule" "allow_http_ipv4" {
+  security_group_id = aws_security_group.allow_ssh_http.id
+  cidr_ipv4         = aws_vpc.main.cidr_block
+  from_port         = 80
+  ip_protocol       = "tcp"
+  to_port           = 80
+}
