@@ -1,7 +1,7 @@
 variable "vpc_cidr" {
-  type    = string
+  type = string
 }
 
 variable "subnet" {
   type = map(map(string))
-  }
+}
