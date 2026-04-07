@@ -1,14 +1,8 @@
 # terraform-project
 
-![alt text][vpc]
-
-[vpc]: vpc.png
-![alt text][ssh]
-
-
-[ssh]: ssh.png
-![alt text](nginx.png)
-
-![alt text](s3.png)
-![alt text](rds.png)
-![alt text](ec2.png)
+![alt text](terraform\docs\vpc.png)
+![alt text](terraform\docs\ssh.png)
+![alt text](terraform\docs\nginx.png)
+![alt text](terraform\docs\s3.png)
+![alt text](terraform\docs\rds.png)
+![alt text](terraform\docs\ec2.png)
